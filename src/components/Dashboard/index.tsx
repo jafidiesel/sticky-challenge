@@ -10,7 +10,7 @@ export const Dashboard = ({
 }) => {
   if (!notes?.length) return <div>No notes added yet</div>;
   return (
-    <div className="flex flex-row justify-start flex-wrap gap-4">
+    <div className="min-h-full">
       {notes.map((note: NoteType) => (
         <Note key={note.id} note={note} onUpdate={updateNote} />
       ))}
