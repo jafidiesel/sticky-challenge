@@ -28,7 +28,11 @@ function App() {
   return (
     <div className="flex h-screen min-h-192 flex-col">
       <Navbar onAddNote={() => setModalOpen(!modalOpen)} />
-      <Dashboard notes={notes} updateNote={updateNote} />
+      <Dashboard
+        notes={notes}
+        updateNote={updateNote}
+        deleteNote={deleteNote}
+      />
       {modalOpen && (
         <CreateModal onSubmit={addNote} onClose={() => setModalOpen(false)} />
       )}

@@ -9,4 +9,7 @@
 
 ## TODO
 
-- add formatter
+- Add formatter
+- Support rich-text
+- Add rich-text sanitize
+- Add edit note feature
