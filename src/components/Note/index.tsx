@@ -39,7 +39,7 @@ export const Note = ({
       }
       className="cursor-grab active:cursor-grabbing"
     >
-      <div className="h-full w-full rounded-lg bg-amber-300 p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10">
+      <div className="h-full w-full rounded-lg bg-amber-300 p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10 text-pretty break-all">
         {note.text}
       </div>
     </Rnd>
