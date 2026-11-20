@@ -4,9 +4,18 @@ import type { NoteType } from "../../types";
 interface Props {
   note: NoteType;
   onUpdate: (id: number, patch: Partial<NoteType>) => void;
+  onDragStart: () => void;
+  onDrag: (e: MouseEvent | TouchEvent) => void;
+  onDragEnd: (e: MouseEvent | TouchEvent) => void;
 }
 
-export const Note = ({ note, onUpdate }: Props) => {
+export const Note = ({
+  note,
+  onUpdate,
+  onDragStart,
+  onDrag,
+  onDragEnd,
+}: Props) => {
   return (
     <Rnd
       size={{ width: note.width, height: note.height }}
@@ -14,7 +23,12 @@ export const Note = ({ note, onUpdate }: Props) => {
       minWidth={160}
       minHeight={120}
       bounds="parent"
-      onDragStop={(e, d) => onUpdate(note.id, { x: d.x, y: d.y })}
+      onDragStart={onDragStart}
+      onDrag={(e) => onDrag(e as MouseEvent | TouchEvent)}
+      onDragStop={(e, d) => {
+        onDragEnd(e as MouseEvent | TouchEvent);
+        onUpdate(note.id, { x: d.x, y: d.y });
+      }}
       onResizeStop={(e, dir, ref, delta, pos) =>
         onUpdate(note?.id, {
           width: ref.offsetWidth,
