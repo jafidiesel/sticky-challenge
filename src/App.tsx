@@ -19,13 +19,17 @@ function App() {
     setModalOpen(false);
   };
 
+  const updateNote = (id: number, patch: Partial<NoteType>) =>
+    setNotes((ns) => ns.map((n) => (n.id === id ? { ...n, ...patch } : n)));
+
+
   const deleteNote = (id: number) =>
     setNotes((ns) => ns.filter((n) => n.id !== id));
 
   return (
     <>
       <Navbar onAddNote={() => setModalOpen(!modalOpen)} />
-      <Dashboard notes={notes} />
+      <Dashboard notes={notes} updateNote={updateNote} />
       {modalOpen && (
         <CreateModal onSubmit={addNote} onClose={() => setModalOpen(false)} />
       )}
