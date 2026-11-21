@@ -3,7 +3,7 @@ import type { NoteType } from "../../types";
 
 interface Props {
   note: NoteType;
-  onUpdate: (id: number, patch: Partial<NoteType>) => void;
+  updatePosition: (id: number, patch: Partial<NoteType>) => void;
   onDragStart: () => void;
   onDrag: (e: MouseEvent | TouchEvent) => void;
   onDragEnd: (e: MouseEvent | TouchEvent) => void;
@@ -11,7 +11,7 @@ interface Props {
 
 export const Note = ({
   note,
-  onUpdate,
+  updatePosition,
   onDragStart,
   onDrag,
   onDragEnd,
@@ -27,10 +27,10 @@ export const Note = ({
       onDrag={(e) => onDrag(e as MouseEvent | TouchEvent)}
       onDragStop={(e, d) => {
         onDragEnd(e as MouseEvent | TouchEvent);
-        onUpdate(note.id, { x: d.x, y: d.y });
+        updatePosition(note.id, { x: d.x, y: d.y });
       }}
       onResizeStop={(e, dir, ref, delta, pos) =>
-        onUpdate(note?.id, {
+        updatePosition(note?.id, {
           width: ref.offsetWidth,
           height: ref.offsetHeight,
           x: pos.x,
