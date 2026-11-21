@@ -6,13 +6,14 @@ export const Dashboard = ({
   notes,
   updatePosition,
   deleteNote,
-  editNote
+  editNote,
+  bringToFront,
 }: {
   notes: NoteType[];
   updatePosition(id: number, patch: Partial<NoteType>): void;
   deleteNote(id: number): void;
   editNote(id: number): void;
-  
+  bringToFront(id: number): void;
 }) => {
   const [dragging, setDragging] = useState(false);
   const [overTrash, setOverTrash] = useState(false);
@@ -40,7 +41,10 @@ export const Dashboard = ({
           key={note.id}
           note={note}
           updatePosition={updatePosition}
-          onDragStart={() => setDragging(true)}
+          onDragStart={() => {
+            setDragging(true);
+            bringToFront(note.id);
+          }}
           onDrag={(e) => {
             setOverTrash(isOver(e, trashRef.current));
             setOverEdit(isOver(e, editRef.current));

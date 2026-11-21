@@ -43,6 +43,14 @@ function App() {
     setNoteBeingEdited(null);
   };
 
+  const bringToFront = (id: number) => {
+    setNotes((ns) => {
+      const note = ns.find((n) => n.id === id);
+      if (!note || ns[ns.length - 1].id === id) return ns; // ya está arriba
+      return [...ns.filter((n) => n.id !== id), note];
+    });
+  };
+
   return (
     <div className="flex h-screen min-h-192 flex-col">
       <Navbar onAddNote={() => setModalOpen(!modalOpen)} />
@@ -51,6 +59,7 @@ function App() {
         updatePosition={updateNote}
         deleteNote={deleteNote}
         editNote={openEditNote}
+        bringToFront={bringToFront}
       />
       {modalOpen && (
         <NoteFormModal
