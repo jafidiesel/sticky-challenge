@@ -30,7 +30,7 @@ export const Note = ({
         onDragEnd(e as MouseEvent | TouchEvent);
         updatePosition(note.id, { x: d.x, y: d.y });
       }}
-      onResizeStop={(e, dir, ref, delta, pos) =>
+      onResizeStop={(_e, _dir, ref, _delta, pos) =>
         updatePosition(note?.id, {
           width: ref.offsetWidth,
           height: ref.offsetHeight,
