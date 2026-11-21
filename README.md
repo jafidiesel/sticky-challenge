@@ -27,6 +27,7 @@ Notes are controlled components: their position and size live in the state, and 
 2. Change note size by dragging.
 3. Move a note by dragging.
 4. Remove a note by dragging it over a predefined "trash" zone.
+
 I. Entering/editing note text. (bonus)
 II. Moving notes to front (in case of overlapping notes). (bonus)
 III. Saving notes to local storage (restoring them on page load). (bonus)
@@ -36,9 +37,9 @@ IV. Different note colors. (bonus)
 ## Missing bonus feature
 ### Saving notes to REST API
 
-This bonus feature wasn't implemented due lack of time but I would give an aproximation of how would I had done it :)
+This bonus feature wasn't implemented due to lack of time but I would give an approximation of how would I had done it :)
 
-I would have created an api.ts simulating an async layer with (async) functions to retreive notes, creat, update and delete notes as endpoints.
+I would have created an api.ts simulating an async layer with (async) functions to retrieve notes, create, update and delete notes as endpoints.
 Each function with a delay to simulate a latency.
 We would continue using localstorage as a fake db.
 ```
@@ -63,8 +64,7 @@ This repo uses [react-rnd](https://www.npmjs.com/package/react-rnd) for dragging
 - Add formatter
 - Support rich-text
 - Add rich-text sanitize
-- Add edit note feature
 - Add confirm delete note
-- Update note position on dragend event
 - Add toast to inform error or success actions
+- Add tests
 
