@@ -1,5 +1,6 @@
 import { Rnd } from "react-rnd";
 import type { NoteType } from "../../types";
+import { getRandomColor } from "../../utils/colors";
 
 interface Props {
   note: NoteType;
@@ -39,7 +40,7 @@ export const Note = ({
       }
       className="cursor-grab active:cursor-grabbing"
     >
-      <div className="h-full w-full overflow-y-auto whitespace-pre-wrap rounded-lg bg-amber-300 p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10 text-pretty break-all">
+      <div className={`h-full w-full overflow-y-auto whitespace-pre-wrap rounded-lg ${getRandomColor(note.id)} p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10 text-pretty break-all`}>
         {note.text}
       </div>
     </Rnd>
