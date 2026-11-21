@@ -1,5 +1,8 @@
 # Sticky challenge
 
+![Screenshot](/capture.png)
+
+
 ## Description
 
 The app is a React + TypeScript single-page application built with Vite and styled with Tailwind. `App` is the single source of truth: it owns the `notes` state and exposes the operations (`addNote`, `updateNote`, `deleteNote`) to its children via props. The tree is simple: `Navbar` triggers the creation flow through a `CreateModal` form, and `Dashboard` renders the list of `Note` components and the trash and edit drop zones.
