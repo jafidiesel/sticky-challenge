@@ -1,9 +1,10 @@
 import { Rnd } from "react-rnd";
 import type { NoteType } from "../../types";
+import { getRandomColor } from "../../utils/colors";
 
 interface Props {
   note: NoteType;
-  onUpdate: (id: number, patch: Partial<NoteType>) => void;
+  updatePosition: (id: number, patch: Partial<NoteType>) => void;
   onDragStart: () => void;
   onDrag: (e: MouseEvent | TouchEvent) => void;
   onDragEnd: (e: MouseEvent | TouchEvent) => void;
@@ -11,7 +12,7 @@ interface Props {
 
 export const Note = ({
   note,
-  onUpdate,
+  updatePosition,
   onDragStart,
   onDrag,
   onDragEnd,
@@ -27,10 +28,10 @@ export const Note = ({
       onDrag={(e) => onDrag(e as MouseEvent | TouchEvent)}
       onDragStop={(e, d) => {
         onDragEnd(e as MouseEvent | TouchEvent);
-        onUpdate(note.id, { x: d.x, y: d.y });
+        updatePosition(note.id, { x: d.x, y: d.y });
       }}
       onResizeStop={(e, dir, ref, delta, pos) =>
-        onUpdate(note?.id, {
+        updatePosition(note?.id, {
           width: ref.offsetWidth,
           height: ref.offsetHeight,
           x: pos.x,
@@ -39,7 +40,7 @@ export const Note = ({
       }
       className="cursor-grab active:cursor-grabbing"
     >
-      <div className="h-full w-full overflow-y-auto whitespace-pre-wrap rounded-lg bg-amber-300 p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10 text-pretty break-all">
+      <div className={`h-full w-full overflow-y-auto whitespace-pre-wrap rounded-lg ${getRandomColor(note.id)} p-3 text-sm leading-snug text-gray-900 shadow-lg shadow-black/40 ring-1 ring-black/10 text-pretty break-all`}>
         {note.text}
       </div>
     </Rnd>

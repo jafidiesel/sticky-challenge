@@ -33,6 +33,7 @@ export function saveNotes(notes: NoteType[]): void {
     console.error("Error saving in localstorage", err);
   }
 }
+
 export const getLastId = () => {
-  return loadNotes().length;
+  return loadNotes()?.length || 0;
 };
